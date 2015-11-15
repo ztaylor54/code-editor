@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<title>Code editor</title>
+
+<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+<link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+
+<meta charset="utf-8"/>
+<link rel=stylesheet href="./doc/docs.css">
+
+
+<link rel="stylesheet" href="./lib/codemirror.css">
+<link rel="stylesheet" href="./theme/3024-day.css">
+<link rel="stylesheet" href="./theme/3024-night.css">
+<link rel="stylesheet" href="./theme/abcdef.css">
+<link rel="stylesheet" href="./theme/ambiance.css">
+<link rel="stylesheet" href="./theme/base16-dark.css">
+<link rel="stylesheet" href="./theme/bespin.css">
+<link rel="stylesheet" href="./theme/base16-light.css">
+<link rel="stylesheet" href="./theme/blackboard.css">
+<link rel="stylesheet" href="./theme/cobalt.css">
+<link rel="stylesheet" href="./theme/colorforth.css">
+<link rel="stylesheet" href="./theme/dracula.css">
+<link rel="stylesheet" href="./theme/eclipse.css">
+<link rel="stylesheet" href="./theme/elegant.css">
+<link rel="stylesheet" href="./theme/erlang-dark.css">
+<link rel="stylesheet" href="./theme/hopscotch.css">
+<link rel="stylesheet" href="./theme/icecoder.css">
+<link rel="stylesheet" href="./theme/isotope.css">
+<link rel="stylesheet" href="./theme/lesser-dark.css">
+<link rel="stylesheet" href="./theme/liquibyte.css">
+<link rel="stylesheet" href="./theme/material.css">
+<link rel="stylesheet" href="./theme/mbo.css">
+<link rel="stylesheet" href="./theme/mdn-like.css">
+<link rel="stylesheet" href="./theme/midnight.css">
+<link rel="stylesheet" href="./theme/monokai.css">
+<link rel="stylesheet" href="./theme/neat.css">
+<link rel="stylesheet" href="./theme/neo.css">
+<link rel="stylesheet" href="./theme/night.css">
+<link rel="stylesheet" href="./theme/paraiso-dark.css">
+<link rel="stylesheet" href="./theme/paraiso-light.css">
+<link rel="stylesheet" href="./theme/pastel-on-dark.css">
+<link rel="stylesheet" href="./theme/railscasts.css">
+<link rel="stylesheet" href="./theme/rubyblue.css">
+<link rel="stylesheet" href="./theme/seti.css">
+<link rel="stylesheet" href="./theme/solarized.css">
+<link rel="stylesheet" href="./theme/the-matrix.css">
+<link rel="stylesheet" href="./theme/tomorrow-night-bright.css">
+<link rel="stylesheet" href="./theme/tomorrow-night-eighties.css">
+<link rel="stylesheet" href="./theme/ttcn.css">
+<link rel="stylesheet" href="./theme/twilight.css">
+<link rel="stylesheet" href="./theme/vibrant-ink.css">
+<link rel="stylesheet" href="./theme/xq-dark.css">
+<link rel="stylesheet" href="./theme/xq-light.css">
+<link rel="stylesheet" href="./theme/yeti.css">
+<link rel="stylesheet" href="./theme/zenburn.css">
+
+<script src="./lib/codemirror.js"></script>
+<script src="./addon/selection/active-line.js"></script>
+<script src="./addon/edit/matchbrackets.js"></script>
+<script src="./addon/mode/loadmode.js"></script>
+
+
+
+
+<form><textarea id="code" name="code">
+</textarea></form>
+
+
+
+<p>Theme: <select onchange="selectTheme()" id=select>
+    <option>default</option>
+    <option>3024-day</option>
+    <option>3024-night</option>
+    <option>abcdef</option>
+    <option>ambiance</option>
+    <option>base16-dark</option>
+    <option>base16-light</option>
+    <option>bespin</option>
+    <option>blackboard</option>
+    <option selected>cobalt</option>
+    <option>colorforth</option>
+    <option>dracula</option>
+    <option>eclipse</option>
+    <option>elegant</option>
+    <option>erlang-dark</option>
+    <option>hopscotch</option>
+    <option>icecoder</option>
+    <option>isotope</option>
+    <option>lesser-dark</option>
+    <option>liquibyte</option>
+    <option>material</option>
+    <option>mbo</option>
+    <option>mdn-like</option>
+    <option>midnight</option>
+    <option>monokai</option>
+    <option>neat</option>
+    <option>neo</option>
+    <option>night</option>
+    <option>paraiso-dark</option>
+    <option>paraiso-light</option>
+    <option>pastel-on-dark</option>
+    <option>railscasts</option>
+    <option>rubyblue</option>
+    <option>seti</option>
+    <option>solarized dark</option>
+    <option>solarized light</option>
+    <option>the-matrix</option>
+    <option>tomorrow-night-bright</option>
+    <option>tomorrow-night-eighties</option>
+    <option>ttcn</option>
+    <option>twilight</option>
+    <option>vibrant-ink</option>
+    <option>xq-dark</option>
+    <option>xq-light</option>
+    <option>yeti</option>
+    <option>zenburn</option>
+</select>
+</p>
+
+<p>language: <input type=text  id=mode> <button type=button onclick="change()">change language</button></p>
+<p>("clike" for all C languages and "htmlmixed" for html with javascript)</p>
+
+
+
+<script>
+CodeMirror.modeURL = "./mode/%N/%N.js";
+  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+    lineNumbers: true,
+    styleActiveLine: true,
+    matchBrackets: true,
+  });
+var modeInput = document.getElementById("mode");
+CodeMirror.on(modeInput, "keypress", function(e) {
+  if (e.keyCode == 13) change();
+});
+function change() {
+  var val = modeInput.value, m, mode, spec;
+  if (m = /.+\.([^.]+)$/.exec(val)) {
+    var info = CodeMirror.findModeByExtension(m[1]);
+    if (info) {
+      mode = info.mode;
+      spec = info.mime;
+    }
+  } else if (/\//.test(val)) {
+    var info = CodeMirror.findModeByMIME(val);
+    if (info) {
+      mode = info.mode;
+      spec = val;
+    }
+  } else {
+    mode = spec = val;
+  }
+  if (mode) {
+    editor.setOption("mode", spec);
+    CodeMirror.autoLoadMode(editor, mode);
+    document.getElementById("modeinfo").textContent = spec;
+  } else {
+    alert("Could not find a mode corresponding to " + val);
+  }
+}
+  var input = document.getElementById("select");
+  function selectTheme() {
+    var theme = input.options[input.selectedIndex].textContent;
+    editor.setOption("theme", theme);
+    location.hash = "#" + theme;
+  }
+  var choice = (location.hash && location.hash.slice(1)) ||
+               (document.location.search &&
+                decodeURIComponent(document.location.search.slice(1)));
+  if (choice) {
+    input.value = choice;
+    editor.setOption("theme", choice);
+  }
+  CodeMirror.on(window, "hashchange", function() {
+    var theme = location.hash.slice(1);
+    if (theme) { input.value = theme; selectTheme(); }
+  });
+</script>
+
+
+</html>
