@@ -1,5 +1,5 @@
 # code-editor
-html document that uses codemirror to create a convenient code editor with changable themes and languages
+html document that uses [Code Mirror](https://codemirror.net/) to create a convenient code editor with changable themes and languages
 
 ##usage:  
 * download all files and dependencies
