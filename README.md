@@ -1,5 +1,10 @@
 # code-editor
-implementation of CodeMirror, simple html file that allows for code editing in chrome
+html document that uses codemirror to create a convenient code editor with changable themes and languages
 
 ##usage:  
-save the files somewhere on your computer, open `notes.html` and bookmark it. done:)
+* download all files and dependencies
+* save the icon and `notes.html` in the root of the code mirror folder
+* open `notes.html` and bookmark it
+
+##Dependency:
+[Code Mirror](https://github.com/codemirror/codemirror)
