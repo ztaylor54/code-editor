@@ -11,6 +11,9 @@
 
 
 <link rel="stylesheet" href="./lib/codemirror.css">
+
+<link rel="stylesheet" href="./addon/hint/show-hint.css">
+
 <link rel="stylesheet" href="./theme/3024-day.css">
 <link rel="stylesheet" href="./theme/3024-night.css">
 <link rel="stylesheet" href="./theme/abcdef.css">
@@ -57,6 +60,15 @@
 <link rel="stylesheet" href="./theme/zenburn.css">
 
 <script src="./lib/codemirror.js"></script>
+
+<script src="./addon/hint/show-hint.js"></script>
+<script src="./addon/hint/javascript-hint.js"></script>
+<script src="./addon/hint/css-hint.js"></script>
+<script src="./addon/hint/html-hint.js"></script>
+<script src="./addon/hint/xml-hint.js"></script>
+<script src="./addon/hint/sql-hint.js"></script>
+<script src="./addon/hint/anyword-hint.js"></script>
+
 <script src="./addon/selection/active-line.js"></script>
 <script src="./addon/edit/matchbrackets.js"></script>
 <script src="./addon/mode/loadmode.js"></script>
@@ -246,7 +258,8 @@
 <p>
 clike: all C languages<br>
 gfm: github-flavored markdown<br>
-htmlmixed: html with javascript
+htmlmixed: html with javascript<br>
+ctrl-space for autocompletion
 </p>
 
 <p></p>
@@ -261,6 +274,7 @@ CodeMirror.modeURL = "./mode/%N/%N.js";
     lineNumbers: true,
     styleActiveLine: true,
     matchBrackets: true,
+    extraKeys: {"Ctrl-Space": "autocomplete"}
   });
 
 var modeInput = document.getElementById("mode");
