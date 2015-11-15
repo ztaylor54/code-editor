@@ -60,8 +60,9 @@
 <script src="./addon/selection/active-line.js"></script>
 <script src="./addon/edit/matchbrackets.js"></script>
 <script src="./addon/mode/loadmode.js"></script>
-<script src="./mode/meta.js"></script>
 <script src="./addon/mode/overlay.js"></script>
+<script src="./mode/meta.js"></script>
+
 
 <form><textarea id="code" name="code">
 </textarea></form>
@@ -118,7 +119,7 @@
 </select>
 </p>
 
-<p>language: <select onchange="change()"  id=mode></p>
+<p>language: <select onchange="change()"  id=mode>
     <option>apl</option>
     <option>asciiarmor</option>
     <option>asn.1</option>
@@ -229,6 +230,18 @@
     <option>yaml</option>
     <option>z80</option>
 </select>
+
+<select onchange="setClikeMode()" id=selectClikeLanguage>
+    <option>C</option>
+    <option>C++</option>
+    <option>Java</option>
+    <option>Objective C</option>
+    <option>Scala</option>
+    <option>Kotlin</option>
+    <option>Ceylon</option>
+</select>
+</p>
+
 <p>
 clike: all C languages<br>
 gfm: github-flavored markdown<br>
@@ -239,6 +252,9 @@ htmlmixed: html with javascript
 <p style="color: gray">Current language: <span id="modeinfo">text/plain</span></p>
 
 <script>
+
+  document.getElementById("selectClikeLanguage").style.visibility='hidden';
+
 CodeMirror.modeURL = "./mode/%N/%N.js";
   var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
     lineNumbers: true,
@@ -251,6 +267,13 @@ CodeMirror.on(modeInput, "keypress", function(e) {
   if (e.keyCode == 13) change();
 });
 function change() {
+  if (document.getElementById("mode").value == "clike"){
+     document.getElementById("selectClikeLanguage").style.visibility='visible';
+  }
+  else{
+  document.getElementById("selectClikeLanguage").style.visibility='hidden';
+}
+
   var val = modeInput.value, mode, spec;
   if (/.+\.([^.]+)$/.exec(val)) {
     var result = /.+\.([^.]+)$/.exec(val);
@@ -276,6 +299,41 @@ function change() {
     alert("Could not find a mode corresponding to " + val);
   }
 }
+
+function setClikeMode()
+{
+   switch(document.getElementById("selectClikeLanguage").value)
+	{
+	case "C":
+		CodeMirror.autoLoadMode(editor, CodeMirror.findModeByMIME("text/x-csrc"));
+		console.log("c");
+		break;
+	case "C++":
+		CodeMirror.autoLoadMode(editor, CodeMirror.findModeByMIME("text/x-c++src"));
+		console.log("c++");
+		break;
+	case "Java":
+		CodeMirror.autoLoadMode(editor, CodeMirror.findModeByMIME("text/x-java"));
+		console.log("java");
+		break;
+	case "Obj C":
+		console.log("objective c");
+		break;
+	case "Scala":
+		CodeMirror.autoLoadMode(editor, CodeMirror.findModeByMIME("text/x-scala"));
+		console.log("scala");
+		break;
+	case "Kotlin":
+		CodeMirror.autoLoadMode(editor, CodeMirror.findModeByMIME("text/x-kotlin"));
+		console.log("kotlin");
+		break;
+	case "Ceylon":
+		CodeMirror.autoLoadMode(editor, CodeMirror.findModeByMIME("text/x-ceylon"));
+		console.log("ceylon");
+		break;
+	}
+}
+
   var input = document.getElementById("select");
   function selectTheme() {
     var theme = input.options[input.selectedIndex].textContent;
