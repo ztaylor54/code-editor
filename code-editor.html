@@ -69,6 +69,8 @@
 <script src="./addon/hint/sql-hint.js"></script>
 <script src="./addon/hint/anyword-hint.js"></script>
 
+<script src="./addon/edit/closebrackets.js"></script>
+
 <script src="./addon/selection/active-line.js"></script>
 <script src="./addon/edit/matchbrackets.js"></script>
 <script src="./addon/mode/loadmode.js"></script>
@@ -274,7 +276,8 @@ CodeMirror.modeURL = "./mode/%N/%N.js";
     lineNumbers: true,
     styleActiveLine: true,
     matchBrackets: true,
-    extraKeys: {"Ctrl-Space": "autocomplete"}
+    extraKeys: {"Ctrl-Space": "autocomplete"},
+    autoCloseBrackets: true
   });
 
 var modeInput = document.getElementById("mode");
