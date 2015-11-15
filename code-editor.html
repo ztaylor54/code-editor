@@ -251,9 +251,10 @@ CodeMirror.on(modeInput, "keypress", function(e) {
   if (e.keyCode == 13) change();
 });
 function change() {
-  var val = modeInput.value, m, mode, spec;
-  if (m = /.+\.([^.]+)$/.exec(val)) {
-    var info = CodeMirror.findModeByExtension(m[1]);
+  var val = modeInput.value, mode, spec;
+  if (/.+\.([^.]+)$/.exec(val)) {
+    var result = /.+\.([^.]+)$/.exec(val);
+    var info = CodeMirror.findModeByExtension(result[1]);
     if (info) {
       mode = info.mode;
       spec = info.mime;
