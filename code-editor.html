@@ -60,8 +60,7 @@
 <script src="./addon/selection/active-line.js"></script>
 <script src="./addon/edit/matchbrackets.js"></script>
 <script src="./addon/mode/loadmode.js"></script>
-
-
+<script src="./mode/meta.js"></script>
 
 
 <form><textarea id="code" name="code">
@@ -119,10 +118,125 @@
 </select>
 </p>
 
-<p>language: <input type=text  id=mode> <button type=button onclick="change()">change language</button></p>
-<p>("clike" for all C languages and "htmlmixed" for html with javascript)</p>
+<p>language: <select onchange="change()"  id=mode></p>
+    <option>apl</option>
+    <option>asciiarmor</option>
+    <option>asn.1</option>
+    <option>asterisk</option>
+    <option>brainfuck</option>
+    <option>clike</option>
+    <option>clojure</option>
+    <option>cmake</option>
+    <option>cobol</option>
+    <option>coffeescript</option>
+    <option>commonlisp</option>
+    <option>css</option>
+    <option>cypher</option>
+    <option>d</option>
+    <option>dart</option>
+    <option>diff</option>
+    <option>django</option>
+    <option>dockerfile</option>
+    <option>dtd</option>
+    <option>dylan</option>
+    <option>ebnf</option>
+    <option>ecl</option>
+    <option>eiffel</option>
+    <option>elm</option>
+    <option>erlang</option>
+    <option>factor</option>
+    <option>forth</option>
+    <option>fortran</option>
+    <option>gas</option>
+    <option>gfm</option>
+    <option>gherkin</option>
+    <option>go</option>
+    <option>groovy</option>
+    <option>haml</option>
+    <option>handlebars</option>
+    <option>haskell</option>
+    <option>haxe</option>
+    <option>htmlembedded</option>
+    <option>htmlmixed</option>
+    <option>http</option>
+    <option>idl</option>
+    <option>jade</option>
+    <option>javascript</option>
+    <option>jinja2</option>
+    <option>julia</option>
+    <option>livescript</option>
+    <option>lua</option>
+    <option>markdown</option>
+    <option>mathematica</option>
+    <option>mirc</option>
+    <option>mllike</option>
+    <option>modelica</option>
+    <option>mscgen</option>
+    <option>mumps</option>
+    <option>nginx</option>
+    <option>nsis</option>
+    <option>ntriples</option>
+    <option>octave</option>
+    <option>oz</option>
+    <option>pascal</option>
+    <option>pegjs</option>
+    <option>perl</option>
+    <option>php</option>
+    <option>pig</option>
+    <option>properties</option>
+    <option>puppet</option>
+    <option>python</option>
+    <option>q</option>
+    <option>r</option>
+    <option>rpm</option>
+    <option>rst</option>
+    <option>ruby</option>
+    <option>rust</option>
+    <option>sass</option>
+    <option>scheme</option>
+    <option>shell</option>
+    <option>sieve</option>
+    <option>slim</option>
+    <option>smalltalk</option>
+    <option>smarty</option>
+    <option>solr</option>
+    <option>soy</option>
+    <option>sparql</option>
+    <option>spreadsheet</option>
+    <option>sql</option>
+    <option>stex</option>
+    <option>stylus</option>
+    <option>swift</option>
+    <option>tcl</option>
+    <option>textile</option>
+    <option>tiddlywiki</option>
+    <option>tiki</option>
+    <option>toml</option>
+    <option>tornado</option>
+    <option>troff</option>
+    <option>ttcn</option>
+    <option>ttcn-cfg</option>
+    <option>turtle</option>
+    <option>twig</option>
+    <option>vb</option>
+    <option>vbscript</option>
+    <option>velocity</option>
+    <option>verilog</option>
+    <option>vhdl</option>
+    <option>vue</option>
+    <option>xml</option>
+    <option>xquery</option>
+    <option>yaml</option>
+    <option>z80</option>
+</select>
+<p>
+clike: all C languages<br>
+gfm: github-flavored markdown<br>
+htmlmixed: html with javascript
+</p>
 
-
+<p></p>
+<p style="color: gray">Current language: <span id="modeinfo">text/plain</span></p>
 
 <script>
 CodeMirror.modeURL = "./mode/%N/%N.js";
@@ -131,6 +245,7 @@ CodeMirror.modeURL = "./mode/%N/%N.js";
     styleActiveLine: true,
     matchBrackets: true,
   });
+
 var modeInput = document.getElementById("mode");
 CodeMirror.on(modeInput, "keypress", function(e) {
   if (e.keyCode == 13) change();
