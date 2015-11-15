@@ -234,6 +234,7 @@
 <select onchange="setClikeMode()" id=selectClikeLanguage>
     <option>C</option>
     <option>C++</option>
+    <option>C#</option>
     <option>Java</option>
     <option>Objective C</option>
     <option>Scala</option>
@@ -305,31 +306,36 @@ function setClikeMode()
    switch(document.getElementById("selectClikeLanguage").value)
 	{
 	case "C":
-		CodeMirror.autoLoadMode(editor, CodeMirror.findModeByMIME("text/x-csrc"));
-		console.log("c");
+		editor.setOption("mode", "text/x-csrc");
+		document.getElementById("modeinfo").textContent = "C";
 		break;
 	case "C++":
-		CodeMirror.autoLoadMode(editor, CodeMirror.findModeByMIME("text/x-c++src"));
-		console.log("c++");
+		editor.setOption("mode", "text/x-c++src");
+		document.getElementById("modeinfo").textContent = "C++";
+		break;
+	case "C#":
+		editor.setOption("mode", "text/x-csharp");
+		document.getElementById("modeinfo").textContent = "C#";
 		break;
 	case "Java":
-		CodeMirror.autoLoadMode(editor, CodeMirror.findModeByMIME("text/x-java"));
-		console.log("java");
+		editor.setOption("mode", "text/x-java");
+		document.getElementById("modeinfo").textContent = "Java";
 		break;
 	case "Obj C":
-		console.log("objective c");
+		editor.setOption("mode", "text/x-objectivec");
+		document.getElementById("modeinfo").textContent = "Objective C";
 		break;
 	case "Scala":
-		CodeMirror.autoLoadMode(editor, CodeMirror.findModeByMIME("text/x-scala"));
-		console.log("scala");
+		editor.setOption("mode", "text/x-scala");
+		document.getElementById("modeinfo").textContent = "Scala";
 		break;
 	case "Kotlin":
-		CodeMirror.autoLoadMode(editor, CodeMirror.findModeByMIME("text/x-kotlin"));
-		console.log("kotlin");
+		editor.setOption("mode", "text/x-kotlin");
+		document.getElementById("modeinfo").textContent = "Kotlin";
 		break;
 	case "Ceylon":
-		CodeMirror.autoLoadMode(editor, CodeMirror.findModeByMIME("text/x-ceylon"));
-		console.log("ceylon");
+		editor.setOption("mode", "text/x-ceylon");
+		document.getElementById("modeinfo").textContent = "Ceylon";
 		break;
 	}
 }
