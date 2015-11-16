@@ -2,8 +2,10 @@
 html document that uses [code mirror](https://codemirror.net/) to create a convenient code editor with changable themes and languages
 
 ##usage:  
-* download all files and dependencies
-* save the `favicon.ico` and `code-editor.html` in the root of the code mirror folder
+* install [Node.js](https://nodejs.org/en/)
+* `git clone https://github.com/ztaylor54/code-editor.git`
+* `cd code-editor`
+* `npm install`
 * open `code-editor.html` and bookmark it
 
 ##dependency:
