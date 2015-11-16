@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ztaylor54/code-editor#readme",
   "dependencies": {
-    "codemirror": "^5.8.0"
+    "codemirror": "^5.8.0",
+    "normalize.css": "^3.0.3"
   }
 }
