@@ -1,0 +1,22 @@
+{
+  "name": "code-editor",
+  "version": "0.1.0",
+  "description": "implementation of CodeMirror, simple html file that allows for code editing in chrome",
+  "main": "code-editor.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ztaylor54/code-editor.git"
+  },
+  "author": "ztaylor54",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ztaylor54/code-editor/issues"
+  },
+  "homepage": "https://github.com/ztaylor54/code-editor#readme",
+  "dependencies": {
+    "codemirror": "^5.8.0"
+  }
+}
