@@ -126,16 +126,29 @@ function download(filename, text) {
   return text
 }
 
+const EXTENSIONS = {
+  'javascript': 'js',
+  'text/x-csrc': 'c',        // C
+  'text/x-c++src': 'cpp',    // C++
+  'text/x-csharp': 'cs',     // C#
+  'text/x-java': 'java',     // Java
+  'text/x-objectivec': 'm',  // Objective-C
+  'text/x-scala': 'scala',   // Scala
+  'text/x-kotlin': 'kt',     // Kotlin
+  'text/x-ceylon': 'ceylon', // Ceylon
+  'htmlembedded': 'html',
+  'htmlmixed': 'html',
+  'coffeescript': 'coffee',
+  'livescript': 'ls',
+  'markdown': 'md',
+  'perl': 'pl',
+  'ruby': 'rb',
+  'python': 'py',
+  'yaml': 'yml'
+}
+
 function getExtension(mode) {
-  switch (mode) {
-    case 'javascript':
-      return 'js'
-    case 'text/x-java':
-      return 'java'
-    case 'htmlembedded':
-    case 'htmlmixed':
-      return 'html'
-  }
+  return EXTENSIONS[mode] || mode
 }
 
 function save() {
