@@ -11,5 +11,9 @@ html document that uses [code mirror](https://codemirror.net/) to create a conve
 ##dependency:
 [code mirror](https://github.com/codemirror/codemirror)
 
-##screenshot:
-![screenshot.png](/screenshot.png)
+##screenshots:
+![screenshot_1.png](/screenshot_1.png)
+
+![screenshot_2.png](/screenshot_2.png)
+
+![screenshot_3.png](/screenshot_3.png)
