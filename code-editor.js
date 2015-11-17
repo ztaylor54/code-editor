@@ -71,7 +71,7 @@ function setClikeMode(mode) {
       editor.setOption('mode', 'text/x-java')
       document.getElementById('modeinfo').textContent = 'Java'
       break
-    case 'Obj C':
+    case 'Objective C':
       editor.setOption('mode', 'text/x-objectivec')
       document.getElementById('modeinfo').textContent = 'Objective C'
       break
