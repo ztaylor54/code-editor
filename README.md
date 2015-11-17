@@ -1,11 +1,17 @@
 # code-editor
 html document that uses [code mirror](https://codemirror.net/) to create a convenient code editor with changable themes and languages
 
-##usage:  
+##usage
+  
+###gh-pages:  
+* `ztaylor54.github.io/code-editor`  [hyper](https://ztaylor54.github.io/code-editor)
+* bookmark it with your favorite theme selected
+
+###local install:
 * install [Node.js](https://nodejs.org/en/)
 * `git clone https://github.com/ztaylor54/code-editor.git`
 * `cd code-editor`
-* `npm install`
+* `npm install` to update dependencies
 * open `code-editor.html` and bookmark it
 
 ##dependency:
