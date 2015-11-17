@@ -12,8 +12,8 @@ html document that uses [code mirror](https://codemirror.net/) to create a conve
 [code mirror](https://github.com/codemirror/codemirror)
 
 ##screenshots:
-![screenshot_1.png](/screenshot_1.png)
+![screenshot_1.png](/screenshots/screenshot_1.png)
 
-![screenshot_2.png](/screenshot_2.png)
+![screenshot_2.png](/screenshots/screenshot_2.png)
 
-![screenshot_3.png](/screenshot_3.png)
+![screenshot_3.png](/screenshots/screenshot_3.png)
