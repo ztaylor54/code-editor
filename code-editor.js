@@ -14,6 +14,9 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Code Mirror is distributed under the MIT License,
+Copyright (C) 2015 by Marijn Haverbeke <marijnh@gmail.com> and others
 */
 document.getElementById('selectClikeLanguage').style.visibility = 'hidden'
 
