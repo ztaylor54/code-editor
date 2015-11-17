@@ -141,7 +141,7 @@ function getExtension(mode) {
 function save() {
   var output = ''
   for (var i = 0; i < editor.lineCount(); i++) output += editor.getLine(i) + '\r\n'
-  var filename = prompt('Filename', 'code.' + getExtension(editor.getOption('mode')))
+  var filename = 'code.' + getExtension(editor.getOption('mode'))
   if (!filename) return null
   return download(filename, output)
 }
